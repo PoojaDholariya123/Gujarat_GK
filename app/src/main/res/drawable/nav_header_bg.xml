@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:endColor="#1E88E5"
+                android:startColor="#0D47A1"
+                android:type="linear" />
+        </shape>
+    </item>
+    <!-- Add faint pattern or curve if needed later, for now clean gradient -->
+    <item android:top="-60dp" android:left="500dp" android:right="100dp" android:bottom="100dp">
+         <shape android:shape="oval">
+             <solid android:color="#1AFFFFFF"/>
+             <size android:width="200dp" android:height="200dp"/>
+         </shape>
+    </item>
+</layer-list>

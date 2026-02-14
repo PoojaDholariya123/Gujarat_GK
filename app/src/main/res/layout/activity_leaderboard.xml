@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen_top">
+
+    <include
+        android:id="@+id/inc_toolbar"
+        layout="@layout/toolbar_common" />
+
+    <!-- Top 3 Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top3Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient"
+        android:paddingBottom="32dp"
+        app:layout_constraintTop_toBottomOf="@id/inc_toolbar">
+
+        <!-- Rank 1 -->
+        <ImageView
+            android:id="@+id/imgRank1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_nav_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/color_primary" />
+
+        <ImageView
+            android:id="@+id/crown"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_nav_rate"
+            app:layout_constraintBottom_toTopOf="@id/imgRank1"
+            app:layout_constraintEnd_toEndOf="@id/imgRank1"
+            app:layout_constraintStart_toStartOf="@id/imgRank1"
+            android:layout_marginBottom="-8dp"
+            app:tint="@color/gold"/>
+
+        <TextView
+            android:id="@+id/tvRank1Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Mishva"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/imgRank1"
+            app:layout_constraintStart_toStartOf="@id/imgRank1"
+            app:layout_constraintTop_toBottomOf="@id/imgRank1" />
+
+        <TextView
+            android:id="@+id/tvRank1Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2500"
+            android:textColor="@color/color_primary"
+            app:layout_constraintEnd_toEndOf="@id/imgRank1"
+            app:layout_constraintStart_toStartOf="@id/imgRank1"
+            app:layout_constraintTop_toBottomOf="@id/tvRank1Name" />
+
+        <!-- Rank 2 -->
+        <ImageView
+            android:id="@+id/imgRank2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/ic_nav_profile"
+            app:layout_constraintEnd_toStartOf="@id/imgRank1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/color_primary"
+            android:alpha="0.9"/>
+
+        <TextView
+            android:id="@+id/tvRank2Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rohan"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/imgRank2"
+            app:layout_constraintStart_toStartOf="@id/imgRank2"
+            app:layout_constraintTop_toBottomOf="@id/imgRank2" />
+            
+        <TextView
+            android:id="@+id/tvRank2Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2100"
+            android:textColor="@color/color_primary"
+            app:layout_constraintEnd_toEndOf="@id/imgRank2"
+            app:layout_constraintStart_toStartOf="@id/imgRank2"
+            app:layout_constraintTop_toBottomOf="@id/tvRank2Name" />
+
+        <!-- Rank 3 -->
+        <ImageView
+            android:id="@+id/imgRank3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/ic_nav_profile"
+            app:layout_constraintStart_toEndOf="@id/imgRank1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/color_primary"
+            android:alpha="0.8"/>
+            
+        <TextView
+            android:id="@+id/tvRank3Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Priya"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/imgRank3"
+            app:layout_constraintStart_toStartOf="@id/imgRank3"
+            app:layout_constraintTop_toBottomOf="@id/imgRank3" />
+            
+         <TextView
+            android:id="@+id/tvRank3Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1800"
+            android:textColor="@color/color_primary"
+            app:layout_constraintEnd_toEndOf="@id/imgRank3"
+            app:layout_constraintStart_toStartOf="@id/imgRank3"
+            app:layout_constraintTop_toBottomOf="@id/tvRank3Name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerLeaderboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top3Container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

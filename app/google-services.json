@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "893289986604",
+    "project_id": "gujarat-gk-in-gujarati",
+    "storage_bucket": "gujarat-gk-in-gujarati.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893289986604:android:53edc03f78f971ac6bef89",
+        "android_client_info": {
+          "package_name": "com.arkay.gujaratquiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLy67iZRh49ocDW8f4dl1dkoW2BBNv0S0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

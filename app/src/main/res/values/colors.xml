@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    
+    <!-- Premium Brand Colors -->
+    <color name="color_primary_dark">#0A2342</color>
+    <color name="color_primary">#2C5E9E</color>
+    <color name="color_primary_light">#5C95D4</color>
+    <color name="color_primary_extra_light">#D6EAF8</color>
+    <color name="color_accent">#FFD700</color>
+    
+    <!-- Backgrounds -->
+    <color name="bg_screen_top">#F0F4F8</color>
+    <color name="bg_screen_bottom">#E2EBF5</color>
+    
+    <!-- Card Colors -->
+    <color name="card_bg_start">#FFFFFF</color>
+    <color name="card_bg_end">#F8FBFF</color>
+    <color name="card_shadow">#20000000</color>
+
+    <!-- Text -->
+    <color name="text_title">#1A1A1A</color>
+    <color name="text_subtitle">#666666</color>
+    <color name="gold">#FFD700</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="color_secondary">#FF5722</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="red">#F44336</color>
+    <color name="green">#008000</color>
+</resources>
