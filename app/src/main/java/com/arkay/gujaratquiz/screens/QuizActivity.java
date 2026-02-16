@@ -455,6 +455,20 @@ public class QuizActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        showExitConfirmationDialog();
+    }
+
+    private void showExitConfirmationDialog() {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Quit Quiz?")
+                .setMessage("Are you sure you want to quit the quiz? Your progress will be lost.")
+                .setPositiveButton("Yes, Quit", (dialog, which) -> finish())
+                .setNegativeButton("No, Stay", null)
+                .show();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (countDownTimer != null) {

@@ -33,17 +33,32 @@ public class HomeScreenActivity extends BaseActivity {
             if (id == R.id.nav_home) {
                 // Already here
             } else if (id == R.id.nav_profile) {
-                // Open Profile
+                startActivity(new android.content.Intent(this, ProfileActivity.class));
             }else if (id == R.id.nav_leaderboard) {
                 startActivity(new android.content.Intent(this, LeaderboardActivity.class));
             } else if (id == R.id.nav_result) {
-                startActivity(new android.content.Intent(this, ResultActivity.class));
+                startActivity(new android.content.Intent(this, HistoryActivity.class));
             } else if (id == R.id.nav_rate) {
-                // Rate App logic
+                String appPackageName = getPackageName();
+                try {
+                    startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, 
+                        android.net.Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, 
+                        android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
             } else if (id == R.id.nav_share) {
-                // Share App logic
-            } else if (id == R.id.nav_about) {
-                // About logic
+                String shareMessage = "\uD83D\uDCDA ગુજરાતી GK Quiz App\n" +
+                        "\n" +
+                        "ગુજરાતી માં ક્વિઝ રમો, જ્ઞાન વધારો અને લીડરબોર્ડમાં ટોપ કરો! \uD83C\uDFC6\n" +
+                        "\n" +
+                        "Download Now \uD83D\uDC47\n" +
+                        "https://play.google.com/store/apps/details?id=" + getPackageName();
+                android.content.Intent shareIntent = new android.content.Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Gujarat GK App");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareMessage);
+                startActivity(android.content.Intent.createChooser(shareIntent, "Share via"));
             }
             binding.drawerLayout.closeDrawers();
             return true;

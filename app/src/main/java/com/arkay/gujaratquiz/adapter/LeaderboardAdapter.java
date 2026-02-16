@@ -37,8 +37,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Start from rank 4 (since top 3 are in header)
-        // Logic: if showing full list, then rank = position + 1.
-        // If showing remaining, rank = position + 4.
+        android.util.Log.d("LeaderboardDebug", "onBindViewHolder called for rank: " + (position + 4));
         User user = list.get(position);
 
         holder.tvRank.setText(String.valueOf(position + 4));

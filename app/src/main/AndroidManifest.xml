@@ -30,6 +30,10 @@
             android:name="com.arkay.gujaratquiz.screens.QuizActivity"
             android:parentActivityName="com.arkay.gujaratquiz.screens.ChooseChallengeActivity"/>
         <activity
+            android:name=".screens.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name="com.arkay.gujaratquiz.screens.ResultActivity"
             android:exported="false" />
         <activity
@@ -37,6 +41,9 @@
             android:exported="false" />
         <activity
             android:name="com.arkay.gujaratquiz.screens.LeaderboardActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.arkay.gujaratquiz.screens.HistoryActivity"
             android:exported="false" />
     </application>
 

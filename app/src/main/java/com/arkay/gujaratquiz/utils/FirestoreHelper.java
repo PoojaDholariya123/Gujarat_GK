@@ -138,9 +138,6 @@ public class FirestoreHelper {
 
     public void saveResult(Map<String, Object> resultMap, OnSuccessListener<Void> onSuccess,
             OnFailureListener onFailure) {
-        // Assuming we have a userId. If not, use device ID or "anonymous".
-        // For now, let's use a hardcoded user or "guest".
-        // Ideally pass userId in resultMap.
         String userId = "guest_user";
         if (resultMap.containsKey("userId")) {
             userId = (String) resultMap.get("userId");
@@ -150,6 +147,51 @@ public class FirestoreHelper {
                 .add(resultMap)
                 .addOnSuccessListener(documentReference -> onSuccess.onSuccess(null))
                 .addOnFailureListener(onFailure);
+    }
+
+    public void updateLeaderboard(String category, String userName, int score, String userId) {
+
+        if (category == null || category.isEmpty())
+            category = "General";
+
+        Map<String, Object> leaderboardData = new HashMap<>();
+        leaderboardData.put("userName", userName);
+        leaderboardData.put("score", score);
+        leaderboardData.put("category", category);
+        leaderboardData.put("timestamp",
+                com.google.firebase.firestore.FieldValue.serverTimestamp());
+        leaderboardData.put("userId", userId);
+
+        // ✅ ADD NEW DOCUMENT EVERY TIME (NO OVERWRITE)
+        db.collection("leaderboard")
+                .add(leaderboardData)
+                .addOnSuccessListener(documentReference ->
+                        Log.d("Leaderboard", "Score added"))
+                .addOnFailureListener(e ->
+                        Log.e("Leaderboard", "Error adding score", e));
+    }
+
+    public void getLeaderboard(String category, OnLeaderboardLoadedListener listener) {
+        if (category == null || category.isEmpty()) category = "General";
+        
+        db.collection("leaderboard")
+                .whereEqualTo("category", category)
+                .orderBy("score", com.google.firebase.firestore.Query.Direction.DESCENDING)
+                .limit(10)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<Map<String, Object>> list = new ArrayList<>();
+                    for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                        list.add(doc.getData());
+                    }
+                    listener.onLeaderboardLoaded(list);
+                })
+                .addOnFailureListener(listener::onError);
+    }
+
+    public interface OnLeaderboardLoadedListener {
+        void onLeaderboardLoaded(List<Map<String, Object>> leaderboard);
+        void onError(Exception e);
     }
 
     public void getLastResult(String userId, OnResultLoadedListener listener) {

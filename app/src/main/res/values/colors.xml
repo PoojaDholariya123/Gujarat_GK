@@ -28,4 +28,10 @@
     <color name="gray_light">#E0E0E0</color>
     <color name="red">#F44336</color>
     <color name="green">#008000</color>
+    
+    <!-- Profile Screen Colors -->
+    <color name="bg_color">#F5F5F5</color>
+    <color name="purple_500">#2C5E9E</color>
+    <color name="teal_700">#018786</color>
+    <color name="dark_gray">#424242</color>
 </resources>

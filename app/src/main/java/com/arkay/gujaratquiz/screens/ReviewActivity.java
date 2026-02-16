@@ -37,7 +37,18 @@ public class ReviewActivity extends BaseActivity {
 
         container = findViewById(R.id.container);
 
-        List<Question> questions = QuizSession.getInstance().getQuestions();
+        List<Question> questions = null;
+        String questionsJson = getIntent().getStringExtra("QUESTIONS_JSON");
+        
+        if (questionsJson != null && !questionsJson.isEmpty()) {
+            // Load from History
+            java.lang.reflect.Type listType = new com.google.gson.reflect.TypeToken<ArrayList<Question>>(){}.getType();
+            questions = new com.google.gson.Gson().fromJson(questionsJson, listType);
+        } else {
+            // Load from current session
+            questions = QuizSession.getInstance().getQuestions();
+        }
+
         if (questions == null || questions.isEmpty())
             return;
 

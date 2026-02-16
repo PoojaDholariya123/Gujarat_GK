@@ -92,14 +92,52 @@ public class ResultActivity extends AppCompatActivity {
             resultMap.put("answers", answerList);
         }
 
-        new com.arkay.gujaratquiz.utils.FirestoreHelper().saveResult(resultMap,
+        // Local DB items
+        com.arkay.gujaratquiz.utils.QuizDatabaseHelper dbHelper = new com.arkay.gujaratquiz.utils.QuizDatabaseHelper(this);
+        String userName = dbHelper.getUserName();
+        String categoryTitle = getIntent().getStringExtra("CATEGORY_TITLE");
+        if (categoryTitle == null) categoryTitle = quizMode;
+
+        // Save to Local SQLite
+        try {
+            com.arkay.gujaratquiz.model.ProfileResultModel localResult = new com.arkay.gujaratquiz.model.ProfileResultModel();
+            localResult.setScore(score);
+            localResult.setTotalQuestions(totalQuestions);
+            localResult.setPercentage((score * 100) / (totalQuestions == 0 ? 1 : totalQuestions));
+            localResult.setQuizMode(quizMode != null ? quizMode : "Quiz");
+            localResult.setJsonFileName(jsonFileName);
+            localResult.setTimestamp(System.currentTimeMillis());
+            
+            // Serialize questions for local review later
+            if (questions != null) {
+                String questionsJson = new com.google.gson.Gson().toJson(questions);
+                localResult.setQuestionsJson(questionsJson);
+            }
+            
+            dbHelper.addResult(localResult);
+            Log.d(TAG, "Result saved to SQLite");
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving to SQLite", e);
+        }
+
+        resultMap.put("userName", userName);
+        
+        // Get unique device ID to distinguish users
+        String uniqueId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        resultMap.put("userId", uniqueId);
+        
+        com.arkay.gujaratquiz.utils.FirestoreHelper firestoreHelper = new com.arkay.gujaratquiz.utils.FirestoreHelper();
+        
+        firestoreHelper.saveResult(resultMap,
                 aVoid -> {
                     Log.d(TAG, "Result saved to Firestore");
-                    Toast.makeText(this, "Result saved to Cloud!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Result saved!", Toast.LENGTH_SHORT).show();
+                    // Update global leaderboard with unique ID
+                    firestoreHelper.updateLeaderboard(getIntent().getStringExtra("CATEGORY_TITLE"), userName, score, uniqueId);
                 },
                 e -> {
                     Log.e(TAG, "Error saving result", e);
-                    Toast.makeText(this, "Failed to save: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Failed to save online: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 

@@ -10,6 +10,29 @@
         android:id="@+id/inc_toolbar"
         layout="@layout/toolbar_common" />
 
+    <HorizontalScrollView
+        android:id="@+id/categoryScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/color_primary_extra_light"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/inc_toolbar">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <!-- Category Chips will be added dynamically -->
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
     <!-- Top 3 Container -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top3Container"
@@ -17,7 +40,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient"
         android:paddingBottom="32dp"
-        app:layout_constraintTop_toBottomOf="@id/inc_toolbar">
+        app:layout_constraintTop_toBottomOf="@id/categoryScrollView">
 
         <!-- Rank 1 -->
         <ImageView
@@ -40,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="@id/imgRank1"
             app:layout_constraintStart_toStartOf="@id/imgRank1"
             android:layout_marginBottom="-8dp"
-            app:tint="@color/gold"/>
+            app:tint="@color/gold" />
 
         <TextView
             android:id="@+id/tvRank1Name"
@@ -70,12 +93,12 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="60dp"
             android:src="@drawable/ic_nav_profile"
             app:layout_constraintEnd_toStartOf="@id/imgRank1"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/color_primary"
-            android:alpha="0.9"/>
+            android:alpha="0.9" />
 
         <TextView
             android:id="@+id/tvRank2Name"
@@ -88,7 +111,7 @@
             app:layout_constraintEnd_toEndOf="@id/imgRank2"
             app:layout_constraintStart_toStartOf="@id/imgRank2"
             app:layout_constraintTop_toBottomOf="@id/imgRank2" />
-            
+
         <TextView
             android:id="@+id/tvRank2Score"
             android:layout_width="wrap_content"
@@ -105,13 +128,13 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="70dp"
             android:src="@drawable/ic_nav_profile"
             app:layout_constraintStart_toEndOf="@id/imgRank1"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/color_primary"
-            android:alpha="0.8"/>
-            
+            android:alpha="0.8" />
+
         <TextView
             android:id="@+id/tvRank3Name"
             android:layout_width="wrap_content"
@@ -123,8 +146,8 @@
             app:layout_constraintEnd_toEndOf="@id/imgRank3"
             app:layout_constraintStart_toStartOf="@id/imgRank3"
             app:layout_constraintTop_toBottomOf="@id/imgRank3" />
-            
-         <TextView
+
+        <TextView
             android:id="@+id/tvRank3Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -141,6 +164,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top3Container" />
 

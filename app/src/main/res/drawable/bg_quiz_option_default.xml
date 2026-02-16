@@ -15,9 +15,7 @@
                 android:color="#D6E4FF"/>
         </shape>
     </item>
-
-
-
+    
     <!-- Top Gradient Layer -->
     <item android:bottom="4dp">
         <shape android:shape="rectangle">
