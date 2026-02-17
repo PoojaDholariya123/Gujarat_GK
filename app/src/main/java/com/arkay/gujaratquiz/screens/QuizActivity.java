@@ -142,6 +142,14 @@ public class QuizActivity extends BaseActivity {
                 }
             }
 
+            // Shuffle and pick 10 questions
+            if (questionList.size() > 10) {
+                java.util.Collections.shuffle(questionList);
+                questionList = new ArrayList<>(questionList.subList(0, 10));
+            } else {
+                java.util.Collections.shuffle(questionList);
+            }
+
             if (!questionList.isEmpty()) {
                 showQuestion();
             } else {
