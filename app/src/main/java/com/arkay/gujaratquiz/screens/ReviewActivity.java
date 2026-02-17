@@ -122,6 +122,6 @@ public class ReviewActivity extends BaseActivity {
         if (answer instanceof List) {
             return ((List<?>) answer).contains(opt);
         }
-        return String.valueOf(answer).equals(opt);
+        return String.valueOf(answer).equalsIgnoreCase(opt);
     }
 }
